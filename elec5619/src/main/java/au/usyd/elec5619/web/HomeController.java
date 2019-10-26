@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import au.usyd.elec5619.domain.User;
+
 /**
  * Handles requests for the application home page.
  */
@@ -22,9 +24,11 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	static private ModelAndView mav= new ModelAndView("register");
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	
 	@RequestMapping(value = "/home/**", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -38,6 +42,10 @@ public class HomeController {
 		
 		return "home";
 	}
+	@RequestMapping(value="/register")
+	public String addUser(Model uiModel) {
+		return "register";
+	}
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public ModelAndView register(HttpServletRequest httpServletRequest) {
 		String userName = httpServletRequest.getParameter("username");
@@ -48,9 +56,12 @@ public class HomeController {
 			gender="male";
 		}
 		
+		User user = new User();
+		user.setEmail(email);
+		user.setPassword(password);
 		
-		
-		return new ModelAndView();
+		mav.setViewName("redirect:/hello");
+		return mav;
 	}
 	
 }

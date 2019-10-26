@@ -26,8 +26,10 @@ public class User implements Serializable{
 	@Column(name="Email", nullable=false)
 	private String email;
 	
-	@Column(name="ProfilePic", nullable=false)
+	@Column(name="ProfilePic", nullable=true)
 	private String profilePic;
+	@Column(name="gender",nullable=true)
+	private String gender;
 	
 	public int getId() {
 		return id;
@@ -36,7 +38,12 @@ public class User implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public String getUserName() {
 		return this.userName;
 	}
