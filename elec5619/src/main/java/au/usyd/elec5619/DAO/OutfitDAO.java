@@ -34,4 +34,9 @@ public class OutfitDAO {
 		currentSession.merge(outfit);
 	}
 
+	public void deleteOutfit(int id) {
+		Session currentSession = this.sessionFactory.getCurrentSession();
+		Outfit outfit = (Outfit) currentSession.get(Outfit.class,id);
+		currentSession.delete(outfit);
+	}
 }

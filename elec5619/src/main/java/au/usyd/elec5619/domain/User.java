@@ -26,8 +26,8 @@ public class User implements Serializable{
 	@Column(name="Email", nullable=false)
 	private String email;
 	
-	@Column(name="ProfilePic", nullable=true)
-	private String profilePic;
+//	@Column(name="ProfilePic", nullable=true)
+//	private String profilePic;
 	@Column(name="gender",nullable=true)
 	private String gender;
 	
@@ -68,13 +68,13 @@ public class User implements Serializable{
 		this.email = email;
 	}
 	
-	public String getProfilePic() {
-		return profilePic;
-	}
-
-	public void setProfilePic(String profilePic) {
-		this.profilePic = profilePic;
-	}
+//	public String getProfilePic() {
+//		return profilePic;
+//	}
+//
+//	public void setProfilePic(String profilePic) {
+//		this.profilePic = profilePic;
+//	}
 	
 	
 //	public String toString() {
