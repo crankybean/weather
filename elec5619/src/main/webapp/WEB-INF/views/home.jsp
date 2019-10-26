@@ -83,32 +83,64 @@
          <p> Hope you enjoy the convenience that WeatherGram brings to you</p>
        </div><!-- Ende Impressum -->
      </footer>
-     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-       <div class="modal-dialog">
-         <div class="loginmodal-container">
-           <h1>Login to Your Account</h1><br>
-           <form>
-             <input type="text" name="user" placeholder="Username">
-             <input type="password" name="pass" placeholder="Password">
-             <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-           </form>
-         </div>
-       </div>
-     </div>
-     <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-       <div class="modal-dialog">
-         <div class="loginmodal-container">
-           <h1>Sign Up</h1><br>
-           <form>
-             <input type="text" name="user" placeholder="Username">
-             <input type="password" name="pass" placeholder="Password">
-             <label class="radio-inline"><input type="radio" name="optradio" checked>Male</label>
-             <label class="radio-inline"><input type="radio" name="optradio">Female</label>
-             <input type="submit" name="login" class="login loginmodal-submit" value="Sign Up">
-           </form>
-         </div>
-       </div>
-     </div>
+    <div id="login-modal" class="modal fade">
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">			
+				<h4 class="modal-title">Login</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form action="/examples/actions/confirmation.php" method="post">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+					</div>        
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a href="#">Forgot Password?</a>
+			</div>
+		</div>
+	</div>
+	</div>
+     <div id="signup-modal" class="modal fade">
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">			
+				<h4 class="modal-title">Login</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form action="register" method="post">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="email" placeholder="Email" required="required">		
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="password2" placeholder="Password" required="required">	
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="gender" placeholder="Male or Female" required="required">	
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Sign Up</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
    </div>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
