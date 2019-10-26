@@ -57,6 +57,10 @@ public class User implements Serializable{
 		return email;
 	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getProfilePic() {
 		return profilePic;
 	}
@@ -65,9 +69,6 @@ public class User implements Serializable{
 		this.profilePic = profilePic;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	
 //	public String toString() {
 //		StringBuffer buffer = new StringBuffer();
