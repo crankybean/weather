@@ -47,7 +47,7 @@ public class HomeController {
 		return "register";
 	}
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public ModelAndView register(HttpServletRequest httpServletRequest) {
+	public String register(HttpServletRequest httpServletRequest) {
 		String userName = httpServletRequest.getParameter("username");
 		String password = httpServletRequest.getParameter("password");
 		String email = httpServletRequest.getParameter("email");
@@ -60,8 +60,8 @@ public class HomeController {
 		user.setEmail(email);
 		user.setPassword(password);
 		
-		mav.setViewName("redirect:/hello");
-		return mav;
+		
+		return "redirect:/home.htm";
 	}
 	
 }
