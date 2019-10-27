@@ -27,6 +27,14 @@ public class SimpleUserManager{
 		return userDAO.getUserById(id);
 	}
 	
+	public User getUserByUserName(String userName) {
+		return userDAO.getUserByUserName(userName);
+	}
+	
+	public int checkLogin(String userName, String password) {
+		return userDAO.checkLogin(userName, password);
+	}
+	
 	public void updateUser(User user) {
 		userDAO.updateUser(user);
 	}

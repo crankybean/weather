@@ -4,9 +4,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title>WeatherLike</title>
-    <link rel="stylesheet" href="resources/css/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/main.css">
   </head>
   <body>
    <div class="container">
@@ -91,7 +91,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="/examples/actions/confirmation.php" method="post">
+				<form action="login" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
 					</div>

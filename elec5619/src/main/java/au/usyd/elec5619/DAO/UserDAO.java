@@ -29,10 +29,34 @@ public class UserDAO {
 		User user = (User) currentSession.get(User.class, id);
 		return user;
 	}
+	
+	public User getUserByUserName(String userName) {
+		Session currentSession = this.sessionFactory.getCurrentSession();
+		User user = (User) currentSession.get(User.class, userName);
+		return user;
+	}
 
 	public void updateUser(User user) {
 		Session currentSession = this.sessionFactory.getCurrentSession();
 		currentSession.merge(user);
+	}
+	
+	public int checkLogin(String userName, String password) {
+		int suc = 0;
+		User user = this.getUserByUserName(userName);
+		if(user == null) {
+			return 1;
+		}
+		else {
+			if(password.equals(user.getPassword())) {
+				suc = 0;
+			}
+			else {
+				suc = 1;
+			}
+		}
+		
+		return suc;
 	}
 
 }
