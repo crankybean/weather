@@ -42,10 +42,10 @@ public class UserDAO {
 	}
 	
 	public int checkLogin(String userName, String password) {
-		int suc = 0;
+		int suc = 1;
 		User user = this.getUserByUserName(userName);
 		if(user == null) {
-			return 1;
+			return -1;
 		}
 		else {
 			if(password.equals(user.getPassword())) {

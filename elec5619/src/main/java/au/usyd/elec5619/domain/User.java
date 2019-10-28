@@ -12,11 +12,11 @@ import javax.persistence.Table;
 @Table(name="User")
 public class User implements Serializable{
 	
-	@Id
 	@GeneratedValue
 	@Column(name="Id",nullable=false, unique=true)
 	private int id;
 	
+	@Id
 	@Column(name="UserName",nullable=false, unique=true)
 	private String userName;
 	
@@ -30,6 +30,8 @@ public class User implements Serializable{
 //	private String profilePic;
 	@Column(name="gender",nullable=true)
 	private String gender;
+	
+	
 	
 	public int getId() {
 		return id;
@@ -68,19 +70,4 @@ public class User implements Serializable{
 		this.email = email;
 	}
 	
-//	public String getProfilePic() {
-//		return profilePic;
-//	}
-//
-//	public void setProfilePic(String profilePic) {
-//		this.profilePic = profilePic;
-//	}
-	
-	
-//	public String toString() {
-//		StringBuffer buffer = new StringBuffer();
-//		buffer.append("Description: " + description + ";");
-//		buffer.append("Price: " + price);
-//		return buffer.toString();
-//	}
 }

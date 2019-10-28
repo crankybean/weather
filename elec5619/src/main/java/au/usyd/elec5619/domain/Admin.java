@@ -47,10 +47,4 @@ public class Admin implements Serializable{
 		this.password = password;
 	}
 	
-//	public String toString() {
-//		StringBuffer buffer = new StringBuffer();
-//		buffer.append("Description: " + description + ";");
-//		buffer.append("Price: " + price);
-//		return buffer.toString();
-//	}
 }

@@ -13,12 +13,11 @@ import javax.persistence.Table;
 public class Outfit implements Serializable{
 	
 	@Id
-	@GeneratedValue
 	@Column(name="Id")
-	private int id;
+	private String id;
 	
-	@Column(name="Style")
-	private int style;
+	@Column(name="Description")
+	private String description;
 	
 	@Column(name="Likes")
 	private int likes;
@@ -26,23 +25,23 @@ public class Outfit implements Serializable{
 	@Column(name="Temp")
 	private double temp;
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
-	public int getStyle() {
-		return style;
+	public String getDescription() {
+		return description;
 	}
 	
-	public void setStyle(int style) {
-		this.style = style;
+	public void setDescription(String Description) {
+		this.description = description;
 	}
 	
-	public long getLikes() {
+	public int getLikes() {
 		return likes;
 	}
 	
@@ -50,9 +49,17 @@ public class Outfit implements Serializable{
 		this.likes = likes;
 	}
 	
+	public double getTemp() {
+		return temp;
+	}
+	
+	public void setTemp(double temp) {
+		this.temp = temp;
+	}
+	
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("Style: " + style + ";");
+		buffer.append("Description: " + description + ";");
 		buffer.append("Likes: " + likes);
 		return buffer.toString();
 	}

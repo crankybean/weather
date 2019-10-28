@@ -6,7 +6,7 @@
     <title>WeatherLike</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="resources/css/main.css">
   </head>
   <body>
    <div class="container">
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-     <div class="wrapper container">
+     <div class="wrapper row">
        <div id="map">
 
        </div>
@@ -45,6 +45,19 @@
            <div class="col text-center">
              <img id="weather-icon" alt="weather-icon">
            </div>
+         </div>
+         <div class="row well">
+           <div class="col text-center align-middle">
+             <h3 id="wind-label" class="align-middle" style="display:inline-block"></h3>
+           </div>
+           <div class="col text-center">
+             <h3 id="humidity-label" class="align-middle" style="display:inline-block"></h3>
+           </div>
+         </div>
+         <div style="padding:5px">
+           	<p id="description"></p>
+         </div>
+         <div class="row" style="margin-top:20px">
          </div>
        </div>
      </div>
@@ -104,7 +117,9 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<a href="#">Forgot Password?</a>
+				<form action="changePassword" method="get">
+    			<input type="submit" name="changePassword" value="Change Password" />
+			</form>
 			</div>
 		</div>
 	</div>

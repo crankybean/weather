@@ -171,11 +171,33 @@ function getWeather(city) {
         var temp=data.main.temp;
         var icon = data.weather[0].icon;
         var iconAddress = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
-
+        var humidity = "Humidity:"+data.main.humidity;
+        var wind = "Wind:"+data.wind.speed+"km/h";
         $("#temp-label").text(temp);
         $("#temp-label").append("&#8451;");
         $("#weather-icon").attr("src",iconAddress);
+        $("#wind-label").text(wind);
+        $("#humidity-label").text(humidity);
+        
+        var description ="hello";
+        if(temp<0){
+        	description="you need to keep your head and ears warm when you are inactive with at least two layers, such as a beanie or balaclava under the hood of your jacket";
+        }else if(temp>=0&&temp<10){
+        	description="\nOuterwear: Padded or Puffer Coat, Overcoats (Trench Coats, Fur or Faux Fur Coats), Down Jackets\n"+"Tops: Sweaters, Jumpers, Turtlenecks\n"+"Bottoms: Jeans, Trousers";
+        }else if(temp>=10&&temp<20){
+        	description="\nTops (for Layering): Shirts, Hoodies, Dresses\n"+"Lightweight Outerwear: Leather jackets, Biker jackets, Parkas, Pea Coats\n"+"Bottoms: Jeans, Trousers, Skirts Shoes: Sneakers, Boots";
+        }else if(temp>=20&&temp<30){
+        	description="This is summer weather – no need to wear layers of clothing or thick fabric. Instead, find something that will keep you fresh. It can get humid at this time of the year too, which will make you feel even hotter. ";
+        }else if(temp>=30&&temp<40){
+        	description="You need to adjust your wardrobe and wear airy clothes. Avoid wearing tight garments as they may lead to skin irritation due to friction and heat.";
+        }else if(temp>=40){
+        	description="You need to adjust your wardrobe and wear airy clothes. Avoid wearing tight garments as they may lead to skin irritation due to friction and heat.";
+        }else{
+        	description="Extreme Weather Condition! DANGEROUS!!"
+        }
+        $("#description").text(description);
     });
+    
 }
 $(window).on('load',function(){
     var d = new Date();
@@ -188,5 +210,31 @@ $(window).on('load',function(){
         (day<10 ? '0' : '') + day;
     $("#current-time-label").text(output);
     getWeather("sydney");
+});
+$("#wearsubmit").click(function(event){
+	var city = $("#city-name").val();
+
+	 var weatherAPI="https://openweathermap.org/data/2.5/weather?q="+city+"&appid=b6907d289e10d714a6e88b30761fae22";
+	    $.get(weatherAPI, function (data) {
+	        console.log(data);
+	        var temp=data.main.temp;
+	        $.ajax({
+	        	type:"POST",
+	        	url:"/outfit",
+	        	data:{"temp":temp},
+	        	success:function(response){
+	        	alert("hello, world");},
+	        	error:function(){
+	        		alert("shit");
+	        	}
+	        	
+	      
+	        });
+	        
+	        
+	        
+	    });
+	
+	
 });
 

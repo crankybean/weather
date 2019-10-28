@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import au.usyd.elec5619.domain.User;
-import au.usyd.elec5619.service.ProductManager;
 import au.usyd.elec5619.service.SimpleUserManager;
 
 /**
@@ -34,11 +33,13 @@ public class HomeController {
 //	static private ModelAndView mav= new ModelAndView("register");
 	@Resource(name="userManager")
 	private SimpleUserManager userManager;
+	
+	private User loginUser = null;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	@RequestMapping(value = "/**", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -75,7 +76,7 @@ public class HomeController {
 		
 		
 		
-		return "redirect:/home";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -85,8 +86,46 @@ public class HomeController {
 		int suc = userManager.checkLogin(userName, password);
 		
 		Map<String, Object> myModel = new HashMap<String, Object>();
-		myModel.put("success",suc);
-		return null;//new ModelAndView("home", "model", myModel);
+		
+		
+		if(suc==0) {
+			myModel.put("success", userName);
+			loginUser = new User();
+			loginUser = userManager.getUserByUserName(userName);
+			myModel.put("email", loginUser.getEmail());
+			myModel.put("gender", loginUser.getGender());
+			return new ModelAndView("loggedin","user",myModel);
+		}
+		else {
+			myModel.put("fail", userName);
+			return new ModelAndView("fail","model",myModel);
+		}
+		//new ModelAndView("home", "model", myModel);
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		loginUser = null;
+		return "home";
+	}
+	
+	@RequestMapping(value = "/changePassword", method = RequestMethod.GET)
+	public String changePassword(HttpServletRequest request, HttpServletResponse response) {
+		return "passwordchange";
+	}
+	
+	@RequestMapping(value = "/outfit", method = RequestMethod.GET)
+	public ModelAndView selectOutfit(HttpServletRequest httpServletRequest){
+		Map<String, Object> myModel = new HashMap<String, Object>();
+		myModel.put("gender", "hello");
+		return new ModelAndView("whattowear","model",myModel);
+	}
+	
+//	public ModelAndView showProfile(HttpServletRequest request, HttpServletResponse response) {
+//		Map<String, Object> myModel = new HashMap<String, Object>();
+//		myModel.put("username", loginUser.getUserName());
+//		myModel.put("email", loginUser.getEmail());
+//		myModel.put("gender", loginUser.getGender());
+//		return new ModelAndView("loggedin","model",myModel);
+//	}
 }
